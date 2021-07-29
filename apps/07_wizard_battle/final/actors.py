@@ -11,13 +11,22 @@ class Creature:
             self.name, self.level
         )
 
-    def get_defensive_roll(self):
-        return random.randint(1, 12) * self.level
+    def get_defensive_roll(self, modifier=3):
+
+        roll = random.randint(1, 12)
+        return modifier * roll * self.level
 
 
 class Wizard(Creature):
 
     def attack(self, creature):
+        """
+        The attack method will attack and potentially kill the creature.
+
+        :param creature: A creature objects which can fight another creature
+        :type creature: Creature
+        :return: True if wizard winds, False if they are defeated
+        """
         print("The wizard {} attacks {}!".format(
             self.name, creature.name
         ))
